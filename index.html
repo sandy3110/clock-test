@@ -69,5 +69,70 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/dayjs/1.10.5/dayjs.min.js">   </script>    
   
     <script type="text/javascript" src="main.js" ></script>
+    
+    <script type="text/javascript">
+    (function(){
+        /**************/
+        // UserIQ helper logic
+        var useriq = (window._uiq = window._uiq || [])
+        useriq.invoked &&
+          window.console &&
+          console.error &&
+          console.error('Useriq snippet already exists.'),
+          (useriq.invoked = !0),
+          (useriq.methods = [
+            'setSiteId',
+            'startTracker',
+            'setDoNotTrack',
+            'identify',
+            'track',
+            'group'
+          ]),
+          (useriq.factory = function(e) {
+            return function() {
+              var r = Array.prototype.slice.call(arguments)
+              return r.unshift(e), useriq.push(r), useriq
+            }
+          })
+        for (var i = 0; i < useriq.methods.length; i++) {
+          var key = useriq.methods[i]
+          useriq[key] = useriq.factory(key)
+        }
+        /**************/
+
+        // All red highlights indicate the areas in the UserIQ script 
+        // that should contain your own variables
+
+        // site id is provided by UserIQ
+        var useriqSiteId = "810002074"
+        
+        // set site id
+        useriq.setSiteId(useriqSiteId)
+
+        // userId is required
+        var userId = "sandeep_kumar_intern"
+
+        // accountId is required for account analytics
+        var accountId = "sandy123"
+
+        // identify user
+        useriq.identify(userId, {
+            user_name: "sandeep.kumar@useriq.com",
+            account_id: "Sandeep Test",
+            account_name: "Sandeep Test",
+            user_email: "sandeep.kumar@useriq.com",
+            signup_date: "2022-01-19" //(YYYY-MM-DD)
+        })
+
+        // start tracker
+        useriq.startTracker()
+
+        /**************/
+        // UserIQ helper logic
+        var d=document, g=d.createElement("script"), s=d.getElementsByTagName("script")[0]; g.type="text/javascript";
+        g.defer=true; g.async=true; g.src="https://feed.useriq.com/useriq.js"; s.parentNode.insertBefore(g,s);
+        /**************/
+    })();
+</script>
 </body>
 </html>
